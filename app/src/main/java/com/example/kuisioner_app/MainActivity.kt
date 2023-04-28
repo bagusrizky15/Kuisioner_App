@@ -83,5 +83,13 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
+
+        binding.btnQuiz.setOnClickListener {
+            startActivity(Intent(this, QuizActivity::class.java))
+        }
+
+        binding.btnAddQuiz.setOnClickListener {
+            startActivity(Intent(this, AddQuizActivity::class.java))
+        }
     }
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddQuizActivity">
+
+    <EditText
+        android:id="@+id/tv_question"
+        android:hint="Pertanyaan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/option_a"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Option A"/>
+
+    <EditText
+        android:id="@+id/option_b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Option B"/>
+
+    <EditText
+        android:id="@+id/option_c"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Option C"/>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"/>
+
+</LinearLayout>
