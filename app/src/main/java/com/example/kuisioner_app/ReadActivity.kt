@@ -1,5 +1,6 @@
 package com.example.kuisioner_app
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,20 +12,29 @@ import com.google.firebase.ktx.Firebase
 class ReadActivity : AppCompatActivity() {
     private lateinit var binding: ActivityReadBinding
     val db = Firebase.firestore
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReadBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val docRef = db.collection("users").document("SF")
-        docRef.get()
-            .addOnSuccessListener { documentSnapshot ->
-                val city = documentSnapshot.toObject<City>()
-                binding.tvTeks.text = city?.country.toString()
+        val ref = db.collection("cities").document("SF")
+           ref.get()
+               .addOnSuccessListener {
+                   document ->
+                   val dataCity = document.toObject<City>()
+                   if (document != null){
+                       binding.tvTeks.text = dataCity?.country.toString()
+                       Log.d("PESAN", "DocumentSnapshot data: ${document.data}")
+                       Log.d("PESAN2", dataCity?.country.toString())
+                   } else {
+                       Log.d("PESAN", "No such document")
+                   }
+               }
+               .addOnFailureListener { exception ->
+                   Log.d("PESAN", "get failed with ", exception)
+               }
 
-            }
-            .addOnFailureListener { exception ->
-                Log.d("READ", "get failed with ", exception)
-            }
     }
+
 }
